@@ -2,7 +2,7 @@
   margin: 0px;
   box-sizing: border-box;
 }
-
+/* navbar  */
 #nav{
     display: flex; 
     justify-content: space-between;
@@ -15,6 +15,7 @@ h1{
     color: white;
 }
 
+/* product display css */
 #root{
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -22,8 +23,8 @@ h1{
     padding: 20px;
     width: 98%;
 }
+/* individual card css */
 #root>div{
-    
      padding: 20px;
     border: 1px solid;
     border-radius:5px ;
@@ -31,6 +32,7 @@ h1{
     flex-direction: column;
     gap: 10px;
 }
+/* product img css */
 #div-img{
     height: 300px;
     width: 200px;

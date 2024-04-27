@@ -2,25 +2,46 @@ let box = document.querySelector("#root");
 let selCategory = document.querySelector("#category");
 let selPrice = document.querySelector("#priceSelect");
 let searInput = document.querySelector("#inputSearch");
-let searBtn = document.querySelector("#btn");
-let narr = []; // Define narr outside of any function
+let narr = [];
+let forSearch = [];  
+ 
+   // search bar 
+function searchbtn(){
+    let value = searInput.value
+    console.log(value);
+    
+   let result = forSearch.filter((ele,i)=>{
 
+    return ele.title.toLowerCase()=== value.toLowerCase()
+   })
+   if(result.length>0){
+    showData(result)
+   }
+   else{
+    box.innerHTML="<h2>product not found</h2>"
+   }
+}
+ 
+
+        // category choosing code 
 selCategory.addEventListener("change", function(){
     let choice = selCategory.value;
     console.log(choice);
     getData(`https://fakestoreapi.com/products/category/${choice}`);
 });
+         
 
+         // price increase and decrease 
 selPrice.addEventListener("change", handlePrice);
 
 function handlePrice(){
     let choice = selPrice.value;
     console.log(choice);
 
-    // Call arrange function with choice and narr
+     
     arrange(choice, narr);
 }
-
+  
 function arrange(choice, arr){
     if(choice === "asc"){
         arr.sort((a, b) => {
@@ -33,15 +54,18 @@ function arrange(choice, arr){
     }
     showData(arr);
 }
-
+  
+           // data fetch to product page  
 let getData = async (url) => {
     let res = await fetch(url);
     let data = await res.json();
     console.log(data);
-    narr = data; // Assign data to narr
+    narr = data;
+    forSearch =data;  
     showData(data);
 };
-
+             
+            // displaying fetched data to dom 
 function showData(arr){
     box.innerHTML = "";
     arr.forEach(ele => {
@@ -52,5 +76,5 @@ function showData(arr){
         box.append(card);
     });
 }
-
+              // calling fetch function giving url 
 getData('https://fakestoreapi.com/products');

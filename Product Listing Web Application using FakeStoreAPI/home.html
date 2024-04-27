@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- navbar section  -->
     <div id="nav">
         <div><h1>Product Listing Page</h1> </div>
+        
+
+        <!-- select tag for category -->
         <div><select id="category" >
             <option disabled="disabled" selected="select">Choose Category</option>
             <option value="electronics">electronics</option>
@@ -16,9 +20,12 @@
             <option value="men's clothing">men's clothing</option>
             <option value="women's clothing">women's clothing</option>
         </select>
-          <input type="text" id="inputSearch">
-          <button id="btn">🔍</button>
+          <!-- search input section -->
+          <input type="text" id="inputSearch" placeholder="search Products ...">
+          <button onclick="searchbtn()">🔍</button>
        </div>
+
+         <!-- select tag for price low to high -->
        <div>
          <select  id="priceSelect">
             <option disabled="disabled" selected="select">Price Range</option>
@@ -27,6 +34,8 @@
          </select>
        </div>
     </div>
+
+    <!-- product loding section -->
     <div id="root"></div>
 </body>
 <script src="script.js">
